@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const Table = require("cli-table3");
+const Table  = require("cli-table3");
 const queries = require('./queries.js');
 const query = new queries.SQLqueries;
 const db = require('./config/connection.js')
@@ -23,6 +23,7 @@ const initialQuestion = function () {
           "Add an Employee",
           "Update Employee Role",
           "View Employees by Manager",
+          "Quit"
         ],
       },
     ])
@@ -30,16 +31,20 @@ const initialQuestion = function () {
       switch (answers["question"]) {
         case "View All Departments":
           query.viewAllDepartments();
+          setTimeout(() => initialQuestion(), 500);
           break;
         case "View All Roles":
           query.viewAllRoles();
+          setTimeout(() => initialQuestion(), 500);
           break;
         case "View All Employees":
           query.viewAllEmployees();
+          setTimeout(() => initialQuestion(), 500);
           break;
         case "Add a Department":
           console.log("Add a Department");
-          addDepartment();
+          query.addDepartment();
+          setTimeout(() => initialQuestion(), 500);
           break;
         case "Add a Role":
           console.log("Add a Role");
@@ -56,6 +61,12 @@ const initialQuestion = function () {
         case "View Employees by Manager":
           console.log("View Employees by Manager");
           query.viewAllbyMgr();
+          setTimeout(() => initialQuestion(), 500);
+          break;
+        //if a user selects "Quit", exit out of the program.
+        case "Quit":
+          console.log("Exiting the program.");
+          process.exit(0);   
       }
     });
 };

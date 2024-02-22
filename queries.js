@@ -1,4 +1,4 @@
-const table = require("cli-table3");
+const Table  = require("cli-table3");
 const inquirer = require("inquirer");
 // Connect to database
 const db = require('./config/connection.js')
@@ -30,9 +30,7 @@ class SQLqueries {
   viewAllDepartments() {
     const sql = `SELECT id,name FROM department`;
     db.query(sql, function (err, result) {
-      if (err) {
-        throw err;
-      }
+      console.log("")
       console.table(result);
     });
   }
