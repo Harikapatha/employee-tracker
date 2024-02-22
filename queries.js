@@ -85,29 +85,6 @@ class SQLqueries {
       });
     });
   }
-
-  // Add department function
-addDepartment() {
-  inquirer
-    .prompt([
-      {
-        type: "input",
-        name: "departmentAdd",
-        message: "Enter name of the department you want to add?",
-      },
-    ])
-    .then((answer) => {
-      let newDepartmentName = answer["departmentAdd"];
-      const sql = `INSERT INTO department (name) VALUES ('${newDepartmentName}')`;
-      db.query(sql, function (err, result) {
-        if (err) {
-          console.log("Error inserting Department into Database:" + err);
-        } else {
-          console.log("Department Added to Database");
-        }
-      });
-    });
-};
   
 }
 module.exports = { SQLqueries };

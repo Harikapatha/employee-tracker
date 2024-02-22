@@ -43,8 +43,7 @@ const initialQuestion = function () {
           break;
         case "Add a Department":
           console.log("Add a Department");
-          query.addDepartment();
-          setTimeout(() => initialQuestion(), 500);
+          addDepartment();
           break;
         case "Add a Role":
           console.log("Add a Role");
@@ -68,6 +67,30 @@ const initialQuestion = function () {
           console.log("Exiting the program.");
           process.exit(0);   
       }
+    });
+};
+
+// Add department function
+const addDepartment = function() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "departmentAdd",
+        message: "Enter name of the department you want to add?",
+      },
+    ])
+    .then((answer) => {
+      let newDepartmentName = answer["departmentAdd"];
+      const sql = `INSERT INTO department (name) VALUES ('${newDepartmentName}')`;
+      db.query(sql, function (err, result) {
+        if (err) {
+          console.log("Error inserting Department into Database:" + err);
+        } else {
+          console.log("Department Added to Database");
+        }
+      });
+      setTimeout(() => initialQuestion(), 500); 
     });
 };
 
@@ -116,7 +139,6 @@ const addRole = function () {
             console.log("Role Added to Database");
           }
         });
-        //query.viewAllRoles();
         setTimeout(() => initialQuestion(), 500);
       });
   });
