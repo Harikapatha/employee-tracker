@@ -1,0 +1,19 @@
+{
+    "name": "employee-tracker",
+    "version": "1.0.0",
+    "description": "command-line employee management application",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "cli-table3": "^0.6.3",
+      "dotenv": "^16.4.1",
+      "figlet": "^1.7.0",
+      "inquirer": "^8.2.6",
+      "mysql2": "^3.9.1",
+      "node": "^21.6.1"
+    }
+  }
