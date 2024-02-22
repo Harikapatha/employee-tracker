@@ -7,7 +7,7 @@ const db = require('./config/connection.js')
 console.clear();
 
 // Initial menu choices
-const initialQuestion = function () {
+const promtUser = function () {
   inquirer
     .prompt([
       {
@@ -31,15 +31,15 @@ const initialQuestion = function () {
       switch (answers["question"]) {
         case "View All Departments":
           query.viewAllDepartments();
-          setTimeout(() => initialQuestion(), 500);
+          setTimeout(() => promtUser(), 500);
           break;
         case "View All Roles":
           query.viewAllRoles();
-          setTimeout(() => initialQuestion(), 500);
+          setTimeout(() => promtUser(), 500);
           break;
         case "View All Employees":
           query.viewAllEmployees();
-          setTimeout(() => initialQuestion(), 500);
+          setTimeout(() => promtUser(), 500);
           break;
         case "Add a Department":
           console.log("Add a Department");
@@ -60,7 +60,7 @@ const initialQuestion = function () {
         case "View Employees by Manager":
           console.log("View Employees by Manager");
           query.viewAllbyMgr();
-          setTimeout(() => initialQuestion(), 500);
+          setTimeout(() => promtUser(), 6000);
           break;
         //if a user selects "Quit", exit out of the program.
         case "Quit":
@@ -90,7 +90,7 @@ const addDepartment = function() {
           console.log("Department Added to Database");
         }
       });
-      setTimeout(() => initialQuestion(), 500); 
+      setTimeout(() => promtUser(), 500); 
     });
 };
 
@@ -139,7 +139,7 @@ const addRole = function () {
             console.log("Role Added to Database");
           }
         });
-        setTimeout(() => initialQuestion(), 500);
+        setTimeout(() => promtUser(), 500);
       });
   });
 };
@@ -206,7 +206,7 @@ const addEmployee = function () {
             }
           });
           // query.viewAllEmployees();
-          setTimeout(() => initialQuestion(), 500);
+          setTimeout(() => promtUser(), 500);
         });  
     });
   });
@@ -262,7 +262,7 @@ const updateEmployeeRole = function () {
               }
             });
             //query.viewAllEmployees();
-            setTimeout(() => initialQuestion(), 500);
+            setTimeout(() => promtUser(), 500);
           });
       });
     }
@@ -270,4 +270,4 @@ const updateEmployeeRole = function () {
 };
 
 
-initialQuestion();
+promtUser();
